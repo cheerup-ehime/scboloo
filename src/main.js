@@ -35,6 +35,9 @@ onMessageListener.add('createScrapboxPage', async (message, sender, sendResponse
     body.push(`[${responseURL} ${tab.url}]`)
   }
 
+  console.log('URL='+url)
+  console.log('original title='+originalTitle)
+
   if (url.match(/shakyo/) || url.match(/ehimesvc/)) tags.push("#ボランティア")
   if (originalTitle.match(/ボランティア/)) tags.push('#ボランティア')
   if (originalTitle.match(/募集/)) tags.push('#募集中')
@@ -52,6 +55,8 @@ onMessageListener.add('createScrapboxPage', async (message, sender, sendResponse
   if (url.match(/kamijima/)) tags.push('#上島町')
   if (url.match(/ainan/)) tags.push('#愛南町')
   if (url.match(/pref\.ehime/)) tags.push('#愛媛県')
+  
+  console.log('tags='+tags.toString())
 
   body.push(text)
   Array.prototype.push.apply(body, tags)
